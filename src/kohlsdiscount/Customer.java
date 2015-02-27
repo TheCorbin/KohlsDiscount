@@ -12,7 +12,6 @@ package kohlsdiscount;
 public class Customer {
     private String customerID;
     private String customerName;
-    private Customer customer;
     
 
     public Customer(String customerID, String customerName) {
@@ -28,10 +27,6 @@ public class Customer {
         return customerName;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
     public void setCustomerID(String customerID) {
         this.customerID = customerID;
     }
@@ -39,19 +34,5 @@ public class Customer {
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 }

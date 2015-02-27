@@ -15,12 +15,16 @@ public class Startup {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        LineMaker liner = new LineMaker();
-        TotalMaker totaler = new TotalMaker();
+        CashRegister POS = new CashRegister();
         
-        CashRegister POS = new CashRegister(liner, totaler);
-        POS.run();
         
+        POS.createReceipt("100", new FakeDatabase());
+        POS.addItem("A101", 2);
+        POS.addItem("B205", 1);
+        POS.addItem("C222", 4);
+        POS.printReceipt();
+        
+        System.out.println("Hello!");
         
         
         

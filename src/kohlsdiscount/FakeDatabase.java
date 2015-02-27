@@ -72,4 +72,5 @@ public class FakeDatabase implements ReceiptDataAccessStrategy {
         }
        
         return product;
-    }
+    } 
+}

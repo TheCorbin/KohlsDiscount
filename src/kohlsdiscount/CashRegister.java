@@ -5,49 +5,30 @@
  */
 package kohlsdiscount;
 
-import java.util.Scanner;
-
 /**
  *
  * @author ryancorbin
  */
 public class CashRegister {
-    private LineMaker liner;
-    private TotalMaker totaler;
-    Scanner scan  = new Scanner(System.in);
-    private String customerID;
-    private Customer customer;
-    private String[] receipt;
-    private ConsoleReceiptMaker consoleReceipt; 
+   
+    private Receipt receipt;
     
-    
-    public CashRegister(LineMaker liner, TotalMaker totaler) {
-        this.liner = liner;
-        this.totaler = totaler;
+    public CashRegister() {
     }
     
-    public void run(){
-            consoleReceipt.run(liner, totaler);
+    public void createReceipt(String customerNo, ReceiptDataAccessStrategy data){
+        receipt = new Receipt(customerNo, data);
     }
+    
+    public void addItem(String productId, int Quantity){
+        receipt.AddLineItem(productId, Quantity);
+    }
+    
+    public void printReceipt(){
+        String[] temp = receipt.receiptReturn();
         
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        for (String line: temp){
+            System.out.println(line);
+        }
+    }
 }

@@ -34,8 +34,8 @@ public class Product {
         return retail;
     }
 
-    public double getDiscount() {
-        return discount.getDiscount(qtyProduct, price);
+    public double getDiscount(int qty) {
+        return discount.getDiscount(qty, retail);
     }
 
     public void setProdNumber(String prodNumber) {
