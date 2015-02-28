@@ -16,13 +16,13 @@ public class Startup {
      */
     public static void main(String[] args) {
         CashRegister POS = new CashRegister();
-        
+        PrintStrategy console = new ConsoleStrategy();
         
         POS.createReceipt("100", new FakeDatabase());
         POS.addItem("A101", 2);
-        POS.addItem("B205", 1);
+        POS.addItem("B205", 2);
         POS.addItem("C222", 4);
-        POS.printReceipt();
+        POS.printReceipt(console);
         
         
         

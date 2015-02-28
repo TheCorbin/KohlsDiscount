@@ -34,6 +34,36 @@ public class Receipt {
         } 
     }
     
+    public String[] receiptReturn(){
+        NumberFormat n = NumberFormat.getCurrencyInstance(Locale.US);
+        String title = "Thanks For Shopping with us "+ customer.getCustomerName();
+        String seperator = "";
+        String category ="Item ID    Item Name           Retail  Quantity  SubTotal  Discount Total   Final Total";
+        strReceipt[0] = title;
+        strReceipt[1] = seperator;
+        strReceipt[2] = category;
+        
+        for (LineItem item : items) {
+            addReceiptItem(1);
+            for (int x = 0; x < strReceipt.length; x++) {
+                if (strReceipt[x] == null) {
+                    strReceipt[x] = item.toString();
+                }
+            }
+        }
+        addReceiptItem(3);
+
+        for (int x = 0; x < strReceipt.length; x++) {
+                if (strReceipt[x] == null) {
+                   strReceipt[x] = "Subtotal:       " + n.format(getSubtotal());
+                   strReceipt[x+1] = "Discount Total: " + n.format(getTotalDiscount());
+                   strReceipt[x+2] = "Final Total:    " + n.format(getFinalTotal());
+                   x = 100;
+                }
+        }
+        return strReceipt;
+    }
+    
     private double getSubtotal(){
         Double subTotal = 0.00;
    
@@ -66,40 +96,6 @@ public class Receipt {
         }  
         return finalTotal;  
     }
-    
-    
-    public String[] receiptReturn(){
-        NumberFormat n = NumberFormat.getCurrencyInstance(Locale.US);
-        String title = "Thanks For Shopping with us "+ customer.getCustomerName();
-        String seperator = "";
-        String category ="Item ID    Item Name           Retail  Quantity  SubTotal  Discount Total   Final Total";
-        strReceipt[0] = title;
-        strReceipt[1] = seperator;
-        strReceipt[2] = category;
-        
-        for (LineItem item : items) {
-            addReceiptItem(1);
-            for (int x = 0; x < strReceipt.length; x++) {
-                if (strReceipt[x] == null) {
-                    strReceipt[x] = item.toString();
-                }
-            }
-        }
-        addReceiptItem(3);
-
-        for (int x = 0; x < strReceipt.length; x++) {
-                if (strReceipt[x] == null) {
-                   strReceipt[x] = "Subtotal:       " + n.format(getSubtotal());
-                   strReceipt[x+1] = "Discount Total: " + n.format(getTotalDiscount());
-                   strReceipt[x+2] = "Final Total:    " + n.format(getFinalTotal());
-                   x = 100;
-                }
-        }
-        
-        return strReceipt;
-    }
-    
-    
     
     private void addReceiptItem(int increase){
         String[] temp = new String[strReceipt.length + increase];

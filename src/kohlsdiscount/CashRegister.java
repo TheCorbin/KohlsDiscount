@@ -12,10 +12,7 @@ package kohlsdiscount;
 public class CashRegister {
    
     private Receipt receipt;
-    
-    public CashRegister() {
-    }
-    
+   
     public void createReceipt(String customerNo, ReceiptDataAccessStrategy data){
         receipt = new Receipt(customerNo, data);
     }
@@ -24,11 +21,7 @@ public class CashRegister {
         receipt.addLineItem(productId, Quantity);
     }
     
-    public void printReceipt(){
-        String[] temp = receipt.receiptReturn();
-        
-        for (String line: temp){
-            System.out.println(line);
-        }
+    public void printReceipt(PrintStrategy printer){
+        printer.print(receipt.receiptReturn()); 
     }
 }
