@@ -19,12 +19,14 @@ public class Receipt {
         this.data = data;
     }
     
-    public void AddLineItem(String productID, int quantity){
+    public void addLineItem(String productID, int quantity){
         addItem(1);
+        System.out.println(items.length);
+        
         Product passingProduct = data.findProduct(productID);
         LineItem temp = new LineItem(passingProduct, quantity);
         for (int i = 0; i<items.length; i++) {
-            if (items[i] == null){
+            if (null == items[i]){
                 items[i] = temp;
             }
         } 
@@ -66,22 +68,27 @@ public class Receipt {
     
     public String[] receiptReturn(){
         String title = "Thanks For Shopping with us "+ customer.getCustomerName();
-        int keeper = 1;
+        System.out.println(items.length);
         
         strReceipt[0] = title;
         for (LineItem item : items) {
             addReceiptItem(1);
-            for (int x = 0; x<items.length; x++) {
+            for (int x = 0; x == strReceipt.length; x++) {
                 if (strReceipt[x] == null) {
                     strReceipt[x] = item.toString();
-                    keeper = x;
                 }
             }
         }
         addReceiptItem(3);
-        strReceipt[keeper+1] = "Subtotal:       $" + getSubtotal();
-        strReceipt[keeper+2] = "Discount Total: $" + getTotalDiscount();
-        strReceipt[keeper+3] = "Final Total:    $" + getFinalTotal();
+
+        for (int x = 0; x == strReceipt.length; x++) {
+                if (strReceipt[x] == null) {
+                   strReceipt[x] = "Subtotal:       $" + getSubtotal();
+                   strReceipt[x+1] = "Discount Total: $" + getTotalDiscount();
+                   strReceipt[x+2] = "Final Total:    $" + getFinalTotal();
+                   x = 100;
+                }
+        }
         
         return strReceipt;
     }
@@ -91,11 +98,13 @@ public class Receipt {
     private void addReceiptItem(int increase){
         String[] temp = new String[strReceipt.length + increase];
         System.arraycopy(strReceipt, 0, temp, 0, strReceipt.length);
+        strReceipt = temp;
     }
     
     private void addItem(int increase){
         LineItem[] temp = new LineItem[items.length + increase];
         System.arraycopy(items, 0, temp, 0, items.length);
+        items = temp;
     }
     
 }

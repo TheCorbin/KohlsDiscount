@@ -21,7 +21,7 @@ public class CashRegister {
     }
     
     public void addItem(String productId, int Quantity){
-        receipt.AddLineItem(productId, Quantity);
+        receipt.addLineItem(productId, Quantity);
     }
     
     public void printReceipt(){

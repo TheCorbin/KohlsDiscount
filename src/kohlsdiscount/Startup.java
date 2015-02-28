@@ -24,7 +24,6 @@ public class Startup {
         POS.addItem("C222", 4);
         POS.printReceipt();
         
-        System.out.println("Hello!");
         
         
         
