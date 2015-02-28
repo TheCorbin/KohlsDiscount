@@ -5,6 +5,9 @@
  */
 package kohlsdiscount;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 /**
  *d
  * @author ryancorbin
@@ -16,11 +19,21 @@ public class LineItem {
     private double subTotal;
     private double Total;
     
+    
     public LineItem(Product passingProduct, int quantity) {
         
         this.quantity = quantity;
         this.item = passingProduct; 
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+    
+    public Double getRetail(){
+        return item.getRetail();
+    }
+    
     
     public double getLineDiscount(){
         discount = item.getDiscount(quantity);
@@ -49,7 +62,9 @@ public class LineItem {
     
     @Override
     public String toString(){
-        String line = getProductId() + "  " + getProductName() + "   " + getLineSubTotal() + "  " + getLineDiscount() + " "  + getLineTotal();
+        NumberFormat n = NumberFormat.getCurrencyInstance(Locale.US);
+        
+        String line = getProductId() + "       " + getProductName() + "   " + n.format(getRetail()) + "      " + getQuantity() + "       " + n.format(getLineSubTotal()) + "       " + n.format(getLineDiscount()) + "       "  + n.format(getLineTotal());
         return line;
     }
     

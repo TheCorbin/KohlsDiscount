@@ -26,7 +26,7 @@ public class QtyDiscount implements DiscountStrategy, NewInterface {
         if (qtyProduct < qty){
             return 0.0;
         } else {
-            return (qtyProduct*price) * (1-percentOff);
+            return (qtyProduct*price) * percentOff;
         }
     }
     

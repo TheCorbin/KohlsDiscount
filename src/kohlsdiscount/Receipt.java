@@ -5,13 +5,16 @@
  */
 package kohlsdiscount;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Receipt {
     private String custID;
     private ReceiptDataAccessStrategy data;
     private LineItem[] items = new LineItem[0];
     private Customer customer;
     
-    private String[] strReceipt = new String[1];
+    private String[] strReceipt = new String[3];
    
     public Receipt(String custID, ReceiptDataAccessStrategy data) {
         this.custID = custID;
@@ -21,8 +24,7 @@ public class Receipt {
     
     public void addLineItem(String productID, int quantity){
         addItem(1);
-        System.out.println(items.length);
-        
+
         Product passingProduct = data.findProduct(productID);
         LineItem temp = new LineItem(passingProduct, quantity);
         for (int i = 0; i<items.length; i++) {
@@ -59,7 +61,7 @@ public class Receipt {
         
         if (items.length != 0){
             for (LineItem Line : items){
-                finalTotal += Line.getLineDiscount();
+                finalTotal += Line.getLineTotal();
             }
         }  
         return finalTotal;  
@@ -67,13 +69,17 @@ public class Receipt {
     
     
     public String[] receiptReturn(){
+        NumberFormat n = NumberFormat.getCurrencyInstance(Locale.US);
         String title = "Thanks For Shopping with us "+ customer.getCustomerName();
-        System.out.println(items.length);
-        
+        String seperator = "";
+        String category ="Item ID    Item Name           Retail  Quantity  SubTotal  Discount Total   Final Total";
         strReceipt[0] = title;
+        strReceipt[1] = seperator;
+        strReceipt[2] = category;
+        
         for (LineItem item : items) {
             addReceiptItem(1);
-            for (int x = 0; x == strReceipt.length; x++) {
+            for (int x = 0; x < strReceipt.length; x++) {
                 if (strReceipt[x] == null) {
                     strReceipt[x] = item.toString();
                 }
@@ -81,11 +87,11 @@ public class Receipt {
         }
         addReceiptItem(3);
 
-        for (int x = 0; x == strReceipt.length; x++) {
+        for (int x = 0; x < strReceipt.length; x++) {
                 if (strReceipt[x] == null) {
-                   strReceipt[x] = "Subtotal:       $" + getSubtotal();
-                   strReceipt[x+1] = "Discount Total: $" + getTotalDiscount();
-                   strReceipt[x+2] = "Final Total:    $" + getFinalTotal();
+                   strReceipt[x] = "Subtotal:       " + n.format(getSubtotal());
+                   strReceipt[x+1] = "Discount Total: " + n.format(getTotalDiscount());
+                   strReceipt[x+2] = "Final Total:    " + n.format(getFinalTotal());
                    x = 100;
                 }
         }
