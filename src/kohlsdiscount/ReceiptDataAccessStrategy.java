@@ -23,6 +23,5 @@ public interface ReceiptDataAccessStrategy {
      * @param prodId - must not be null or empty
      * @return found Product or null if not found or bad argument
      */
-    Product findProduct(final String prodId);
-    
+    Product findProduct(final String prodId); 
 }

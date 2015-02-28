@@ -3,18 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package kohlsdiscount;
+package kohlsdiscount.Discounts;
+
+import kohlsdiscount.DiscountStrategy;
 
 /**
  *
  * @author ryancorbin
  */
-public class ConsoleStrategy implements PrintStrategy {
+public class NoDiscount implements DiscountStrategy {
+
+    public NoDiscount() {
+    }
     
     @Override
-    public void print(String[] temp){
-        for (String line: temp){
-            System.out.println(line);
-        }
+    public Double getDiscount(int qtyProduct, double price){
+        return 0.0;
     }
+    
 }

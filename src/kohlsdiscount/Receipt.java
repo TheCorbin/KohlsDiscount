@@ -51,13 +51,17 @@ public class Receipt {
                 }
             }
         }
+        
+        addReceiptItem(1);
+        strReceipt[strReceipt.length - 1] = seperator;
+        
         addReceiptItem(3);
 
         for (int x = 0; x < strReceipt.length; x++) {
                 if (strReceipt[x] == null) {
-                   strReceipt[x] = "Subtotal:       " + n.format(getSubtotal());
-                   strReceipt[x+1] = "Discount Total: " + n.format(getTotalDiscount());
-                   strReceipt[x+2] = "Final Total:    " + n.format(getFinalTotal());
+                   strReceipt[x] = String.format("Subtotal: %74s", n.format(getSubtotal()));
+                   strReceipt[x+1] = String.format("Discount Total: %68s", n.format(getTotalDiscount()));
+                   strReceipt[x+2] = String.format("Final Total: %71s", n.format(getFinalTotal()));
                    x = 100;
                 }
         }

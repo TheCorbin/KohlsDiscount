@@ -63,12 +63,7 @@ public class LineItem {
     @Override
     public String toString(){
         NumberFormat n = NumberFormat.getCurrencyInstance(Locale.US);
-        String s = String.format("%-12.5f%.20f", 12.23429837482,9.10212023134);
-        
-        
         String line = String.format("%4s%24s%9s%7s%12s%14s%14s", getProductId(), getProductName(), n.format(getRetail()), getQuantity(), n.format(getLineSubTotal()), n.format(getLineDiscount()), n.format(getLineTotal()));  
-                
-//        String line = getProductId() + "       " + getProductName() + "   " + n.format(getRetail()) + "      " + getQuantity() + "       " + n.format(getLineSubTotal()) + "       " + n.format(getLineDiscount()) + "       "  + n.format(getLineTotal());
         return line;
     }
     

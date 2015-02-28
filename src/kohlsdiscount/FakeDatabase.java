@@ -5,6 +5,10 @@
  */
 package kohlsdiscount;
 
+import kohlsdiscount.Discounts.QtyDiscount;
+import kohlsdiscount.Discounts.PercentOffDiscount;
+import kohlsdiscount.Discounts.NoDiscount;
+
 /**
  *
  * @author ryancorbin

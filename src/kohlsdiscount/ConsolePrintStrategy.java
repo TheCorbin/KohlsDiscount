@@ -9,14 +9,12 @@ package kohlsdiscount;
  *
  * @author ryancorbin
  */
-public class NoDiscount implements DiscountStrategy {
-
-    public NoDiscount() {
-    }
+public class ConsolePrintStrategy implements PrintStrategy {
     
     @Override
-    public Double getDiscount(int qtyProduct, double price){
-        return 0.0;
+    public void print(String[] temp){
+        for (String line: temp){
+            System.out.println(line);
+        }
     }
-    
 }
