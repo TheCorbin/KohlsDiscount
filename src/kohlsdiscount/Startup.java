@@ -12,14 +12,14 @@ package kohlsdiscount;
 public class Startup {
 
     public static void main(String[] args) {
-        CashRegister POS = new CashRegister();
+        CashRegister pOS = new CashRegister();
         PrintStrategy console = new ConsolePrintStrategy();
         
-        POS.createReceipt("300", new FakeDatabase());
-        POS.addItem("A101", 2);
-        POS.addItem("B205", 2);
-        POS.addItem("C222", 4);
-        POS.addItem("A101", 1);
-        POS.printReceipt(console);     
+        pOS.createReceipt("300", new FakeDatabase());
+        pOS.addItem("A101", 2);
+        pOS.addItem("B205", 2);
+        pOS.addItem("C222", 4);
+        pOS.addItem("A101", 1);
+        pOS.printReceipt(console);     
     } 
 }
