@@ -13,7 +13,7 @@ public class Customer {
     private String customerID;
     private String customerName;
     
-    public Customer(String customerID, String customerName) {
+    public Customer(final String customerID, final String customerName) {
         this.customerID = customerID;
         this.customerName = customerName;
     }
@@ -26,11 +26,11 @@ public class Customer {
         return customerName;
     }
 
-    public void setCustomerID(String customerID) {
+    public void setCustomerID(final String customerID) {
         this.customerID = customerID;
     }
 
-    public void setCustomerName(String customerName) {
+    public void setCustomerName(final String customerName) {
         this.customerName = customerName;
     }
     

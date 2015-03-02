@@ -20,7 +20,7 @@ public class LineItem {
     private double Total;
     
     
-    public LineItem(Product passingProduct, int quantity) {
+    public LineItem(Product passingProduct, final int quantity) {
         
         this.quantity = quantity;
         this.item = passingProduct; 

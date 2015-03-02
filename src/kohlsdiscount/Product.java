@@ -15,7 +15,7 @@ public class Product {
     private Double retail;
     private DiscountStrategy discount;
 
-    public Product(String prodNumber, String prodName, Double retail, DiscountStrategy discount) {
+    public Product(final String prodNumber, final String prodName, final Double retail, final DiscountStrategy discount) {
         this.prodNumber = prodNumber;
         this.prodName = prodName;
         this.retail = retail;
@@ -34,23 +34,23 @@ public class Product {
         return retail;
     }
 
-    public double getDiscount(int qty) {
+    public double getDiscount(final int qty) {
         return discount.getDiscount(qty, retail);
     }
 
-    public void setProdNumber(String prodNumber) {
+    public void setProdNumber(final String prodNumber) {
         this.prodNumber = prodNumber;
     }
 
-    public void setProdName(String prodName) {
+    public void setProdName(final String prodName) {
         this.prodName = prodName;
     }
 
-    public void setRetail(Double retail) {
+    public void setRetail(final Double retail) {
         this.retail = retail;
     }
 
-    public void setDiscount(DiscountStrategy discount) {
+    public void setDiscount(final DiscountStrategy discount) {
         this.discount = discount;
     }
     

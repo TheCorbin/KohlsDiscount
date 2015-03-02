@@ -15,7 +15,7 @@ public class Startup {
         CashRegister POS = new CashRegister();
         PrintStrategy console = new ConsolePrintStrategy();
         
-        POS.createReceipt("100", new FakeDatabase());
+        POS.createReceipt("300", new FakeDatabase());
         POS.addItem("A101", 2);
         POS.addItem("B205", 2);
         POS.addItem("C222", 4);

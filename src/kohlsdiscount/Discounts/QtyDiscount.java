@@ -18,13 +18,13 @@ public class QtyDiscount implements DiscountStrategy{
     private Double percentOff;
     private int qty;
 
-    public QtyDiscount(Double percentOff, int qty) {
+    public QtyDiscount(final Double percentOff, final int qty) {
         this.percentOff = percentOff;
         this.qty = qty;
     }
    
     @Override
-    public Double getDiscount(int qtyProduct, double price){
+    public Double getDiscount(final int qtyProduct, final double price){
         if (qtyProduct < qty){
             return 0.0;
         } else {

@@ -15,12 +15,12 @@ public class PercentOffDiscount implements DiscountStrategy {
     
     private Double percentOff;
 
-    public PercentOffDiscount(Double percentOff) {
+    public PercentOffDiscount(final Double percentOff) {
         this.percentOff = percentOff;
     }
     
     @Override
-    public Double getDiscount(int qtyProduct, double price){
+    public Double getDiscount(final int qtyProduct, final double price){
         return (qtyProduct*price) * percentOff; 
     }
 }

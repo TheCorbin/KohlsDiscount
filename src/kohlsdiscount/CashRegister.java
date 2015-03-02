@@ -13,15 +13,15 @@ public class CashRegister {
    
     private Receipt receipt;
    
-    public void createReceipt(String customerNo, ReceiptDataAccessStrategy data){
+    public void createReceipt(final String customerNo, final ReceiptDataAccessStrategy data){
         receipt = new Receipt(customerNo, data);
     }
     
-    public void addItem(String productId, int Quantity){
+    public void addItem(final String productId, final int Quantity){
         receipt.addLineItem(productId, Quantity);
     }
     
-    public void printReceipt(PrintStrategy printer){
+    public void printReceipt(final PrintStrategy printer){
         printer.print(receipt.receiptReturn()); 
     }
 }

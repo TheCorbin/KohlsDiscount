@@ -9,20 +9,18 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public class Receipt {
-    private String custID;
-    private ReceiptDataAccessStrategy data;
+    private final ReceiptDataAccessStrategy data;
     private LineItem[] items = new LineItem[0];
-    private Customer customer;
+    private final Customer customer;
     
     private String[] strReceipt = new String[3];
    
-    public Receipt(String custID, ReceiptDataAccessStrategy data) {
-        this.custID = custID;
+    public Receipt(final String custID, final ReceiptDataAccessStrategy data) {
         customer = data.findCustomer(custID);
         this.data = data;
     }
     
-    public void addLineItem(String productID, int quantity){
+    public void addLineItem(final String productID, final int quantity){
         addItem(1);
 
         Product passingProduct = data.findProduct(productID);
@@ -101,13 +99,13 @@ public class Receipt {
         return finalTotal;  
     }
     
-    private void addReceiptItem(int increase){
+    private void addReceiptItem(final int increase){
         String[] temp = new String[strReceipt.length + increase];
         System.arraycopy(strReceipt, 0, temp, 0, strReceipt.length);
         strReceipt = temp;
     }
     
-    private void addItem(int increase){
+    private void addItem(final int increase){
         LineItem[] temp = new LineItem[items.length + increase];
         System.arraycopy(items, 0, temp, 0, items.length);
         items = temp;
